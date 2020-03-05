@@ -9,15 +9,14 @@ import java.util.Random;
 
 public class Card {
     public void registerCard() {
-        Card card = new Card();
         DBConnection dbConnection = new DBConnection();
         Connection connection = dbConnection.connectDB();
         String sql = "INSERT INTO cards(card_number, card_balance) VALUES(?, ?);";
 
         PreparedStatement preparedStatement = null;
 
-        long cardNumber = card.generateCardNumber();
-        double cardBalance = card.generateCardBalance();
+        long cardNumber = generateCardNumber();
+        double cardBalance = generateCardBalance();
 
         try {
             preparedStatement = connection.prepareStatement(sql);
